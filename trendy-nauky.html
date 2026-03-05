@@ -1,233 +1,162 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="uk">
 
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    color: white;
-    min-height: 100vh;
-}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тренди науки</title>
 
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+    }
 
-header {
-    text-align: center;
-    padding: 40px 20px;
-}
+    header {
+      text-align: center;
+      padding: 40px 20px;
+    }
 
-header h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-}
+    header h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
 
-header p {
-    opacity: 0.8;
-    margin-bottom: 15px;
-}
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
 
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-nav a:hover {
-    color: #00c6ff;
-}
-
-
-main {
-    display: flex;
-    gap: 30px;
-    padding: 40px 8%;
-}
-
-.left {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    flex: 1;
-}
-
-.center {
-    flex: 2;
-    text-align: center;
-}
-
-.sidebar-right {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    flex: 1;
-}
-
-
-.block {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 25px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.block.big {
-    font-size: 18px;
-}
-
-.block.small {
-    font-size: 15px;
-}
-
-
-.center img {
-    width: 100%;
-    max-width: 600px;
-    border-radius: 12px;
-    margin: 20px 0;
-}
-
-
-.counter-title {
-    margin-top: 10px;
-    opacity: 0.8;
-}
-
-.num {
-    font-size: 28px;
-    font-weight: bold;
-}
-
-
-.ai-box {
-    margin-top: 25px;
-    padding: 20px;
-    border-radius: 15px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(0, 198, 255, 0.3);
-}
-
-.ai-box button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    color: white;
-    background: linear-gradient(45deg, #00c6ff, #0072ff);
-    transition: 0.3s;
-}
-
-.ai-box button:hover {
-    box-shadow: 0 0 10px #00c6ff;
-}
-
-
-.categories {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    padding: 60px;
-}
-
-.card {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 30px;
-    text-align: center;
-    transition: 0.4s;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.card:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
-}
-
-.icon {
-    font-size: 50px;
-    margin-bottom: 15px;
-}
-
-.card p {
-    font-size: 15px;
-    color: #ddd;
-    line-height: 1.6;
-}
-
-.btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    border-radius: 25px;
-    text-decoration: none;
-    color: white;
-    background: linear-gradient(45deg, #00c6ff, #0072ff);
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background: linear-gradient(45deg, #ff00cc, #3333ff);
-    box-shadow: 0 0 15px #00c6ff;
-}
-
-
-.fact-block {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(14px);
-    border-radius: 18px;
-    padding: 25px 30px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(0, 198, 255, 0.3);
-    transition: 0.4s;
-    max-width: 700px;
-}
-
-.fact-block:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 0 20px rgba(0, 198, 255, 0.5);
-}
-
-.fact-block h3 {
-    color: #ff00cc;
-    margin-bottom: 12px;
-}
-
-
-footer {
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-    background: rgba(0, 0, 0, 0.2);
-}
-
-
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: 0.6s;
-}
-
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-@media(max-width:900px) {
-
-    main {
-        flex-direction: column;
+    nav a:hover {
+      color: #00c6ff;
     }
 
     .categories {
-        padding: 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 60px;
     }
 
-}
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      transition: 0.4s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+    }
+
+    .icon {
+      font-size: 50px;
+      margin-bottom: 15px;
+    }
+
+    .card h2 {
+      margin: 10px 0;
+      font-size: 22px;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: #ddd;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      color: white;
+      background: linear-gradient(45deg, #00c6ff, #0072ff);
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      background: linear-gradient(45deg, #ff00cc, #3333ff);
+      box-shadow: 0 0 15px #00c6ff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.2);
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🔬 Тренди науки 2026</h1>
+    <nav>
+      <a href="index.html">Головна</a>
+      <a href="facts.html">Цікаві факти</a>
+    </nav>
+  </header>
+
+  <section class="categories">
+
+    <div class="card">
+      <div class="icon">🤖</div>
+      <h2>Штучний інтелект</h2>
+      <p>
+        Розвиток нейромереж, машинного навчання та автоматизації.
+        AI змінює медицину, освіту, бізнес та створює нові цифрові професії.
+      </p>
+      <a href="https://uk.wikipedia.org/wiki/Штучний_інтелект" target="_blank" class="btn">Вікіпедія</a>
+    </div>
+
+    <div class="card">
+      <div class="icon">🚀</div>
+      <h2>Космічні технології</h2>
+      <p>
+        Дослідження Марса, приватні космічні компанії,
+        нові супутники та багаторазові ракети.
+      </p>
+      <a href="https://uk.wikipedia.org/wiki/Космічні_технології" target="_blank" class="btn">Вікіпедія</a>
+    </div>
+
+    <div class="card">
+      <div class="icon">🧬</div>
+      <h2>Генна інженерія</h2>
+      <p>
+        Редагування ДНК, лікування спадкових хвороб
+        та створення нових біотехнологій.
+      </p>
+      <a href="https://uk.wikipedia.org/wiki/Генна_інженерія" target="_blank" class="btn">Вікіпедія</a>
+    </div>
+
+    <div class="card">
+      <div class="icon">🦾</div>
+      <h2>Робототехніка</h2>
+      <p>
+        Промислові, медичні та військові роботи,
+        автоматизація виробництва та побуту.
+      </p>
+      <a href="https://uk.wikipedia.org/wiki/Робототехніка" target="_blank" class="btn">Вікіпедія</a>
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 Science Trends | Create by PolarOwl for school
+  </footer>
+
+</body>
+
+</html>
