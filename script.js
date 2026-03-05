@@ -1,48 +1,41 @@
-const faders = document.querySelectorAll('.fade-in');
+const elements = document.querySelectorAll('.fade-in');
 
-const appearOptions = {
-    threshold: 0.1
-};
-
-const appearOnScroll = new IntersectionObserver(function (entries, observer) {
-
+const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-
-        if (!entry.isIntersecting) {
-            return;
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
         }
-
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-
     });
-
-}, appearOptions);
-
-faders.forEach(fader => {
-    appearOnScroll.observe(fader);
 });
 
+elements.forEach(el => observer.observe(el));
 
 
-let visits = localStorage.getItem("visits");
+
+let visits = localStorage.getItem("siteVisits");
 
 if (!visits) {
-    visits = 0;
+    visits = 1;
+} else {
+    visits = parseInt(visits) + 1;
 }
 
-visits++;
+localStorage.setItem("siteVisits", visits);
 
-localStorage.setItem("visits", visits);
+const counter = document.getElementById("visitCount");
+let current = 0;
 
-const visitEl = document.getElementById("visitCount");
+const animateCounter = () => {
+    if (current < visits) {
+        current++;
+        counter.textContent = current;
+        requestAnimationFrame(animateCounter);
+    }
+};
 
-if (visitEl) {
-    visitEl.textContent = visits;
-}
+animateCounter();
 
-const aiBtn = document.getElementById("aiBtn");
-const aiText = document.getElementById("aiText");
+
 
 const tips = [
     "Наука починається там, де з’являється питання.",
@@ -65,17 +58,41 @@ const tips = [
     "Думай повільно, перевіряй уважно.",
     "Логіка — твій найкращий інструмент.",
     "Чим більше знаєш, тим більше питань виникає."
-
 ];
 
-if (aiBtn) {
+const aiBtn = document.getElementById("aiBtn");
+const aiText = document.getElementById("aiText");
 
-    aiBtn.onclick = function () {
+aiBtn.addEventListener("click", () => {
+    const randomTip = tips[Math.floor(Math.random() * tips.length)];
+    aiText.style.opacity = 0;
 
-        const random = Math.floor(Math.random() * tips.length);
+    setTimeout(() => {
+        aiText.textContent = randomTip;
+        aiText.style.opacity = 1;
+    }, 200);
+});
+const toggleBtn = document.getElementById("themeToggle");
 
-        aiText.textContent = tips[random];
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+}
 
-    }
+if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
 
+        if (document.body.classList.contains("dark")) {
+            localStorage.setItem("theme", "dark");
+        } else {
+            localStorage.setItem("theme", "light");
+        }
+    });
+}
+document.body.classList.toggle("dark");
+
+if (document.body.classList.contains("dark")) {
+    localStorage.setItem("theme", "dark");
+} else {
+    localStorage.setItem("theme", "light");
 }
